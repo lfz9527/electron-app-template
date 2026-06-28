@@ -1,3 +1,4 @@
+import { app } from 'electron'
 import log from 'electron-log/main'
 
 // 初始化日志
@@ -5,7 +6,8 @@ function setupLogger(): void {
   log.initialize()
 
   log.transports.file.level = 'info'
-  log.transports.console.level = process.env.NODE_ENV === 'development' ? 'debug' : false
+  // 未打包时控制台打印日志（dev + preview）
+  log.transports.console.level = app.isPackaged ? false : 'info'
 
   log.info('Logger initialized')
 }

@@ -7,5 +7,5 @@ export function registerIpc(): void {
   registerDialogIpc()
   registerFileIpc()
 
-  Logger.info('registerIpc')
+  Logger.info('register ipc')
 }

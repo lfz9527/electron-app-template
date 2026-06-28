@@ -1,5 +1,6 @@
 import { app } from 'electron'
 import Logger from 'electron-log/main'
+import { destroyServices } from '@main/services'
 
 export function setupLifecycle(): void {
   // 所有窗口关闭时，仅非 macOS 系统退出应用
@@ -15,10 +16,10 @@ export function setupLifecycle(): void {
     Logger.info('[lifecycle] before-quit')
   })
 
-  // 应用退出时执行最终清理
+  // 应用彻底退出时注销所有服务
   app.on('quit', () => {
-    Logger.info('[lifecycle] quit → final cleanup')
-    // TODO: 清除临时文件、停止后台服务等
+    destroyServices()
+    Logger.info('[lifecycle] quit → destroyed services')
   })
 
   // macOS dock 图标点击且无窗口时，重建主窗口
