@@ -10,7 +10,7 @@ export async function bootstrap(): Promise<void> {
   // 注册ipc
   registerIpc()
   // 初始化服务
-  initService()
+  await initService()
 
   // 创建主窗口
   const mainWindow = createMainWindow()
