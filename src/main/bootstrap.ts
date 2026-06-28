@@ -1,13 +1,8 @@
-import Logger from 'electron-log/main'
-
 import { setupLifecycle } from './lifecycle'
 import { createMainWindow } from './windows/MainWindow'
 import { registerDevToolsCommands } from './commands/command'
 import { registerIpc } from './ipc'
-
-async function initService(): Promise<void> {
-  Logger.info('init service')
-}
+import { initService } from './services'
 
 export async function bootstrap(): Promise<void> {
   // 初始化生命周期
