@@ -14,9 +14,7 @@ async function start(): Promise<void> {
     await bootstrap()
   } catch (error) {
     console.error('[main] failed to start', error)
-
     app.quit()
   }
 }
-
-void start()
+start()
