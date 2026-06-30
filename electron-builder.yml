@@ -2,6 +2,7 @@ appId: com.electron.app
 productName: electron-app-template
 directories:
   buildResources: build
+compression: maximum
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -9,8 +10,16 @@ files:
   - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
   - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
   - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+  - '!node_modules/.cache'
+  - '!node_modules/**/*.md'
+  - '!node_modules/**/*.ts'
+  - '!node_modules/**/*.map'
+  - '!node_modules/**/docs'
+  - '!node_modules/**/example'
+  - '!node_modules/**/test'
 asarUnpack:
   - resources/**
+  - 'node_modules/**/*.node'
 win:
   executableName: electron-app-template
 nsis:
@@ -18,6 +27,11 @@ nsis:
   shortcutName: ${productName}
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  runAfterFinish: true
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
 mac:
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
@@ -38,6 +52,8 @@ linux:
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
+electronLanguages:
+  - en-US
 publish:
   provider: generic
   url: https://example.com/auto-updates
