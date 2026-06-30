@@ -8,4 +8,6 @@ declare namespace Global {
   type OneArgVoidFunction<T = string> = (arg: T) => void
   // 一个promise函数但是没有返回值
   type PromiseVoidFunction = () => Promise<void>
+
+  type WindowInfo = { id: string }
 }

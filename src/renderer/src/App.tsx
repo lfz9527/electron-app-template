@@ -2,7 +2,11 @@ import Versions from './components/Versions'
 import electronLogo from './assets/electron.svg'
 
 function App(): React.JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+  const ipcHandle = async () => {
+    const windowInfo = await window.api.getWindowInfo()
+
+    console.log(222, windowInfo)
+  }
 
   return (
     <>
