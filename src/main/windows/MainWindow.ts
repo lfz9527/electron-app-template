@@ -1,24 +1,23 @@
-import { BrowserWindow } from 'electron'
+import { BaseWindow } from './BaseService'
 import { join } from 'path'
+import { is } from '@electron-toolkit/utils'
+import { defaultOptions } from './utils'
 
-export function createMainWindow(): BrowserWindow {
-  const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
-    show: true,
-    autoHideMenuBar: true,
-    webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
-  })
+export class MainWindow extends BaseWindow {
+  readonly id = 'main'
 
-  // 开发模式加载 dev server，生产模式加载打包后的文件
-  if (process.env['ELECTRON_RENDERER_URL']) {
-    mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
-  } else {
-    mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
+  protected getOptions() {
+    return defaultOptions
   }
 
-  return mainWindow
+  protected async load(): Promise<void> {
+    // 开发模式加载 dev server，生产模式加载打包后的文件
+    if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+      this.window!.loadURL(process.env['ELECTRON_RENDERER_URL'])
+    } else {
+      this.window!.loadFile(join(__dirname, '../renderer/index.html'))
+    }
+  }
 }
+
+export const mainWindow = new MainWindow()

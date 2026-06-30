@@ -1,9 +1,11 @@
 import { Tray, Menu, app, nativeImage } from 'electron'
 import { join } from 'path'
-import { BaseService } from './types'
+import type { IService } from './types'
 import Logger from 'electron-log/main'
 
-class TrayService implements BaseService {
+class TrayService implements IService {
+  readonly name = 'TrayService'
+
   private tray: Tray | null = null
 
   private getIconPath(): string {
