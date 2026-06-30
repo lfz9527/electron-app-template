@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron'
 import { readFile, writeFile } from 'fs/promises'
-import { IPC } from '@common/constants/ipc'
+import { IPC } from '@share/constants/ipc'
 
 export function registerFileIpc(): void {
   // 读取文件内容（UTF-8）

@@ -5,5 +5,6 @@ export const IPC = {
   FILE_WRITE: 'file:write',
   STORE_GET: 'store:get',
   STORE_SET: 'store:set',
-  STORE_CHANGED: 'store:changed'
+  STORE_CHANGED: 'store:changed',
+  WINDOW_GET_INFO: 'window:getInfo'
 } as const

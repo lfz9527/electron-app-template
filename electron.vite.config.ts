@@ -7,14 +7,14 @@ export default defineConfig({
     resolve: {
       alias: {
         '@main': resolve('src/main'),
-        '@common': resolve('src/common')
+        '@share': resolve('src/share')
       }
     }
   },
   preload: {
     resolve: {
       alias: {
-        '@common': resolve('src/common')
+        '@share': resolve('src/share')
       }
     }
   },
@@ -23,7 +23,7 @@ export default defineConfig({
       alias: {
         '@': resolve('src'),
         '@renderer': resolve('src/renderer/src'),
-        '@common': resolve('src/common'),
+        '@share': resolve('src/share'),
         '@types': resolve('src/types')
       }
     },

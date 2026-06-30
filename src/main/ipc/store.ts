@@ -1,5 +1,5 @@
 import { ipcMain, BrowserWindow } from 'electron'
-import { IPC } from '@common/constants/ipc'
+import { IPC } from '@share/constants/ipc'
 import { mainStore } from '@main/store/mainStore'
 
 export function registerStoreIpc(): void {

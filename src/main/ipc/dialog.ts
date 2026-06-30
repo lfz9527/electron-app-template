@@ -1,5 +1,5 @@
 import { dialog, ipcMain } from 'electron'
-import { IPC } from '@common/constants/ipc'
+import { IPC } from '@share/constants/ipc'
 
 export function registerDialogIpc(): void {
   // 打开文件对话框
