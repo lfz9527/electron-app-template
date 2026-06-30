@@ -8,6 +8,7 @@ export function setupLifecycle(): void {
   app.on('window-all-closed', () => {
     Logger.info('[lifecycle] window-all-closed')
     if (process.platform !== 'darwin') {
+      // 点击主窗口时，先暂时退出程序
       app.quit()
     }
   })
@@ -20,7 +21,7 @@ export function setupLifecycle(): void {
   // 应用彻底退出时注销所有服务
   app.on('quit', () => {
     serviceManager.destroy()
-    Logger.info('[lifecycle] quit → destroyed services')
+    Logger.info('[lifecycle] quit')
   })
 
   // macOS dock 图标点击且无窗口时，重建主窗口

@@ -2,6 +2,7 @@ import { Tray, Menu, app, nativeImage } from 'electron'
 import { join } from 'path'
 import type { IService } from './types'
 import Logger from 'electron-log/main'
+import { mainWindow } from '@main/windows/MainWindow'
 
 class TrayService implements IService {
   readonly name = 'TrayService'
@@ -20,7 +21,7 @@ class TrayService implements IService {
       {
         label: '显示窗口',
         click: (): void => {
-          // TODO: 配合 WindowManager 显示主窗口
+          mainWindow.show()
         }
       },
       { type: 'separator' },

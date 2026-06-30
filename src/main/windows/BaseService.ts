@@ -21,12 +21,13 @@ export abstract class BaseWindow {
     }
   }
 
-  async create(): Promise<BaseBrowserWindow> {
+  async create(opt: BrowserWindowConstructorOptions = {}): Promise<BaseBrowserWindow> {
     if (this.isCreated() && !this.isDestroyed()) {
       return this.window
     }
 
-    this.window = new BrowserWindow(this.getOptions())
+    const options = { ...this.getOptions(), ...opt }
+    this.window = new BrowserWindow(options)
 
     await this.load()
 
