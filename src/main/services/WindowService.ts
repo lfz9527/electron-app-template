@@ -14,6 +14,9 @@ export class WindowService implements IService {
   async destroy() {
     this.closeAll()
   }
+  destroyById(id: string) {
+    this.windows.get(id)?.destroy()
+  }
 
   register(window: BaseWindow) {
     this.windows.set(window.id, window)
@@ -21,10 +24,6 @@ export class WindowService implements IService {
 
   getByWebContents(webContents: WebContents) {
     return this.webContentsMap.get(webContents.id)
-  }
-
-  getMainWindow() {
-    return this.get('main')
   }
 
   get(id: string) {
@@ -48,10 +47,6 @@ export class WindowService implements IService {
 
   close(id: string) {
     this.windows.get(id)?.close()
-  }
-
-  destroyById(id: string) {
-    this.windows.get(id)?.destroy()
   }
 
   closeAll() {

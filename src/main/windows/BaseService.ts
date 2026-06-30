@@ -67,9 +67,10 @@ export abstract class BaseWindow {
   destroy(): void {
     this.window?.destroy()
   }
-  isDestroyed(): boolean {
-    return !!this?.window?.isDestroyed()
+  focus(): void {
+    this.window?.focus()
   }
+
   getBrowserWindow(): BaseBrowserWindow {
     return this.window
   }
@@ -77,7 +78,8 @@ export abstract class BaseWindow {
   isCreated(): boolean {
     return !!this.window
   }
-  focus(): void {
-    this.window?.focus()
+
+  isDestroyed(): boolean {
+    return !!this?.window?.isDestroyed()
   }
 }
