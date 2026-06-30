@@ -1,5 +1,7 @@
 import { BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
 import { registerDevToolsCommands } from '@main/commands/command'
+import { join } from 'path'
+import { is } from '@electron-toolkit/utils'
 
 type BaseBrowserWindow = BrowserWindow | null
 
@@ -10,7 +12,14 @@ export abstract class BaseWindow {
 
   protected abstract getOptions(): BrowserWindowConstructorOptions
 
-  protected abstract load(): Promise<void>
+  protected async load() {
+    // 开发模式加载 dev server，生产模式加载打包后的文件
+    if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+      this.window!.loadURL(process.env['ELECTRON_RENDERER_URL'])
+    } else {
+      this.window!.loadFile(join(__dirname, '../renderer/index.html'))
+    }
+  }
 
   async create(): Promise<BaseBrowserWindow> {
     if (this.isCreated() && !this.isDestroyed()) {

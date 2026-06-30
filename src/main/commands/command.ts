@@ -1,6 +1,5 @@
 import { BrowserWindow } from 'electron'
-import { isBuild } from '@main/utils'
-
+import { is } from '@electron-toolkit/utils'
 /**
  * 关闭DevTools
  * @param win BrowserWindow
@@ -24,7 +23,7 @@ export function openDevTools(win: BrowserWindow): void {
  */
 export function registerDevToolsCommands(window: BrowserWindow): void {
   // 只在开发/测试环境下生效
-  if (isBuild()) return
+  if (!is.dev) return
 
   // 自动打开 DevTools
   openDevTools(window)
