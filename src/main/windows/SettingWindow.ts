@@ -17,6 +17,7 @@ export class SettingWindow extends BaseWindow {
 
     this.window?.on('close', (e) => {
       e.preventDefault()
+      this.focus()
       this.window?.webContents.send(IPC.WINDOW_BEFORE_CLOSE)
     })
   }

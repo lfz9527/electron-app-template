@@ -10,5 +10,8 @@ export const IPC = {
   WINDOW_OPEN: 'window:open',
   WINDOW_BEFORE_CLOSE: 'window:beforeClose',
   WINDOW_CLOSE: 'window:close',
-  WINDOW_DESTROY: 'window:destroy'
+  WINDOW_DESTROY: 'window:destroy',
+  WINDOW_CLOSE_CANCEL: 'window:closeCancel',
+  WINDOW_OPEN_EXCLUSIVE: 'window:openExclusive',
+  WINDOW_GET_ALL_IDS: 'window:getAllIds'
 } as const

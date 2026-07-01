@@ -1,5 +1,6 @@
 import { ipcMain } from 'electron'
 import { IPC } from '@share/constants/ipc'
+import { WIND_ID } from '@share/constants/index'
 import { windowService } from '@main/services/WindowService'
 import { isAdmin } from '@main/utils'
 
@@ -29,5 +30,17 @@ export function registerWindowIpc(): void {
       return
     }
     windowService.destroy()
+  })
+
+  ipcMain.handle(IPC.WINDOW_CLOSE_CANCEL, async (event) => {
+    windowService.cancelClose(event.sender.id)
+  })
+
+  ipcMain.handle(IPC.WINDOW_OPEN_EXCLUSIVE, async (_event, id: string, exclusiveIds: string[]) => {
+    return await windowService.openWithExclusive(id, exclusiveIds)
+  })
+
+  ipcMain.handle(IPC.WINDOW_GET_ALL_IDS, async () => {
+    return WIND_ID
   })
 }

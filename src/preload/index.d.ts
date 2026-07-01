@@ -9,6 +9,9 @@ declare global {
       onBeforeClose: (callback: () => void) => void
       winClose: () => Promise<void>
       winDestroy: () => Promise<void>
+      closeCancel: () => Promise<void>
+      openWindowExclusive: (id: string, exclusiveIds: string[]) => Promise<boolean>
+      getWindowIds: () => Promise<typeof import('@share/constants/index').WIND_ID>
     }
   }
 }

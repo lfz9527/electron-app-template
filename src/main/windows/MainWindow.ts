@@ -1,5 +1,4 @@
 import { BaseWindow } from './BaseService'
-
 import { defaultOptions } from './utils'
 import { WIND_ID } from '@share/constants/index'
 

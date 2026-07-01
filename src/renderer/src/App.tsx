@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import Versions from './components/Versions'
 import electronLogo from './assets/electron.svg'
 
+const winIds = await window.api.getWindowIds()
+
 function App(): React.JSX.Element {
   const [showCloseConfirm, setShowCloseConfirm] = useState(false)
 
   useEffect(() => {
     window.api.getWindowInfo().then(({ id }) => {
-      if (id === 'setting') {
+      if (id === winIds.SETTING) {
         window.api.onBeforeClose(() => setShowCloseConfirm(true))
       }
     })
@@ -42,19 +44,13 @@ function App(): React.JSX.Element {
           </a>
         </div>
         <div className="action">
-          <a onClick={() => window.api.openWindow('login')}>
-            Open Login
-          </a>
+          <a onClick={() => window.api.openWindow(winIds.LOGIN)}>Open Login</a>
         </div>
         <div className="action">
-          <a onClick={() => window.api.openWindow('setting')}>
-            Open Setting
-          </a>
+          <a onClick={() => window.api.openWindow(winIds.SETTING)}>Open Setting</a>
         </div>
         <div className="action">
-          <a onClick={() => window.api.openWindow('author')}>
-            Open Author
-          </a>
+          <a onClick={() => window.api.openWindowExclusive(winIds.AUTHOR, [winIds.SETTING])}>Open Author</a>
         </div>
       </div>
       <Versions></Versions>
@@ -64,7 +60,14 @@ function App(): React.JSX.Element {
           <div className="close-confirm-dialog">
             <p className="close-confirm-message">是否确认关闭设置窗口？</p>
             <div className="close-confirm-actions">
-              <button onClick={() => setShowCloseConfirm(false)}>取消</button>
+              <button
+                onClick={() => {
+                  setShowCloseConfirm(false)
+                  window.api.closeCancel()
+                }}
+              >
+                取消
+              </button>
               <button onClick={() => window.api.winDestroy()}>确认关闭</button>
             </div>
           </div>
