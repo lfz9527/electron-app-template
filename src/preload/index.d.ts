@@ -6,6 +6,9 @@ declare global {
     api: {
       getWindowInfo: () => Promise<Global.WindowInfo>
       openWindow: (id: string) => Promise<void>
+      onBeforeClose: (callback: () => void) => void
+      winClose: () => Promise<void>
+      winDestroy: () => Promise<void>
     }
   }
 }

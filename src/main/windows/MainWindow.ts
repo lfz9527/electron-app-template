@@ -1,9 +1,10 @@
 import { BaseWindow } from './BaseService'
 
 import { defaultOptions } from './utils'
+import { WIND_ID } from '@share/constants/index'
 
 export class MainWindow extends BaseWindow {
-  readonly id = 'main'
+  readonly id = WIND_ID.ADMIN
 
   protected getOptions() {
     return defaultOptions

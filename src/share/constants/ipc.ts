@@ -7,5 +7,8 @@ export const IPC = {
   STORE_SET: 'store:set',
   STORE_CHANGED: 'store:changed',
   WINDOW_GET_INFO: 'window:getInfo',
-  WINDOW_OPEN: 'window:open'
+  WINDOW_OPEN: 'window:open',
+  WINDOW_BEFORE_CLOSE: 'window:beforeClose',
+  WINDOW_CLOSE: 'window:close',
+  WINDOW_DESTROY: 'window:destroy'
 } as const

@@ -1,5 +1,6 @@
 import { BaseWindow } from '../windows/BaseService'
 import { WebContents } from 'electron'
+import { WIND_ID } from '@share/constants/index'
 import { mainWindow } from '@main/windows/MainWindow'
 import { loginWindow } from '@main/windows/LoginWindow'
 import { settingWindow } from '@main/windows/SettingWindow'
@@ -12,11 +13,16 @@ export class WindowService implements IService {
   private readonly webContentsMap = new Map<number, BaseWindow>()
 
   async init() {
-    this.open('main')
+    this.open(WIND_ID.ADMIN)
   }
   async destroy() {
-    this.closeAll()
+    for (const window of this.windows.values()) {
+      if (!window.isDestroyed()) {
+        window?.destroy()
+      }
+    }
   }
+
   destroyById(id: string) {
     this.windows.get(id)?.destroy()
   }
@@ -45,6 +51,7 @@ export class WindowService implements IService {
         this.webContentsMap.delete(webContentsId)
       })
     }
+
     await window.show()
   }
 

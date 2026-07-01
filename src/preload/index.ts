@@ -5,7 +5,12 @@ import { IPC } from '@share/constants/ipc'
 // 预加载脚本暴露出去的api
 const api = {
   getWindowInfo: () => ipcRenderer.invoke(IPC.WINDOW_GET_INFO),
-  openWindow: (id: string) => ipcRenderer.invoke(IPC.WINDOW_OPEN, id)
+  openWindow: (id: string) => ipcRenderer.invoke(IPC.WINDOW_OPEN, id),
+  onBeforeClose: (callback: () => void) => {
+    ipcRenderer.on(IPC.WINDOW_BEFORE_CLOSE, callback)
+  },
+  winClose: () => ipcRenderer.invoke(IPC.WINDOW_CLOSE),
+  winDestroy: () => ipcRenderer.invoke(IPC.WINDOW_DESTROY)
 }
 
 // 仅在开启**上下文隔离（context isolation）**的情况下，使用 contextBridge API 将 Electron API 暴露给渲染进程；
