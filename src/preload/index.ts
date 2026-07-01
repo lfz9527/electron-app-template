@@ -4,7 +4,8 @@ import { IPC } from '@share/constants/ipc'
 
 // 预加载脚本暴露出去的api
 const api = {
-  getWindowInfo: () => ipcRenderer.invoke(IPC.WINDOW_GET_INFO)
+  getWindowInfo: () => ipcRenderer.invoke(IPC.WINDOW_GET_INFO),
+  openWindow: (id: string) => ipcRenderer.invoke(IPC.WINDOW_OPEN, id)
 }
 
 // 仅在开启**上下文隔离（context isolation）**的情况下，使用 contextBridge API 将 Electron API 暴露给渲染进程；

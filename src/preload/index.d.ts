@@ -5,6 +5,7 @@ declare global {
     electron: ElectronAPI
     api: {
       getWindowInfo: () => Promise<Global.WindowInfo>
+      openWindow: (id: string) => Promise<void>
     }
   }
 }

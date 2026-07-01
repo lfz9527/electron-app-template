@@ -30,6 +30,21 @@ function App(): React.JSX.Element {
             Send IPC
           </a>
         </div>
+        <div className="action">
+          <a onClick={() => window.api.openWindow('login')}>
+            Open Login
+          </a>
+        </div>
+        <div className="action">
+          <a onClick={() => window.api.openWindow('setting')}>
+            Open Setting
+          </a>
+        </div>
+        <div className="action">
+          <a onClick={() => window.api.openWindow('author')}>
+            Open Author
+          </a>
+        </div>
       </div>
       <Versions></Versions>
     </>

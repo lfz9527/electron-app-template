@@ -10,14 +10,20 @@ export abstract class BaseWindow {
 
   abstract readonly id: string
 
+  protected readonly route: string = '/'
+
   protected abstract getOptions(): BrowserWindowConstructorOptions
 
   protected async load() {
     // 开发模式加载 dev server，生产模式加载打包后的文件
     if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
-      this.window!.loadURL(process.env['ELECTRON_RENDERER_URL'])
+      const url = new URL(process.env.ELECTRON_RENDERER_URL)
+      url.hash = this.route
+      await this.window!.loadURL(url.toString())
     } else {
-      this.window!.loadFile(join(__dirname, '../renderer/index.html'))
+      await this.window!.loadFile(join(__dirname, '../renderer/index.html'), {
+        hash: this.route
+      })
     }
   }
 

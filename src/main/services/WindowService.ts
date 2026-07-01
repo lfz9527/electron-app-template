@@ -1,6 +1,9 @@
 import { BaseWindow } from '../windows/BaseService'
 import { WebContents } from 'electron'
 import { mainWindow } from '@main/windows/MainWindow'
+import { loginWindow } from '@main/windows/LoginWindow'
+import { settingWindow } from '@main/windows/SettingWindow'
+import { authorWindow } from '@main/windows/AuthorWindow'
 import type { IService } from './types'
 
 export class WindowService implements IService {
@@ -59,3 +62,6 @@ export class WindowService implements IService {
 export const windowService = new WindowService()
 
 windowService.register(mainWindow)
+windowService.register(loginWindow)
+windowService.register(settingWindow)
+windowService.register(authorWindow)

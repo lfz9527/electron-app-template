@@ -7,4 +7,8 @@ export function registerWindowIpc(): void {
     const win = windowService.getByWebContents(_event.sender)
     return { id: win?.id || '' } as Global.WindowInfo
   })
+
+  ipcMain.handle(IPC.WINDOW_OPEN, async (_event, id: string) => {
+    await windowService.open(id)
+  })
 }

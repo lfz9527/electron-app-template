@@ -6,5 +6,6 @@ export const IPC = {
   STORE_GET: 'store:get',
   STORE_SET: 'store:set',
   STORE_CHANGED: 'store:changed',
-  WINDOW_GET_INFO: 'window:getInfo'
+  WINDOW_GET_INFO: 'window:getInfo',
+  WINDOW_OPEN: 'window:open'
 } as const
