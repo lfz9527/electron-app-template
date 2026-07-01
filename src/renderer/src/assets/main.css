@@ -151,6 +151,61 @@ code {
   }
 }
 
+.close-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.close-confirm-dialog {
+  background: #2b2b30;
+  border-radius: 12px;
+  padding: 28px 32px;
+  min-width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.close-confirm-message {
+  font-size: 15px;
+  color: var(--ev-c-text-1);
+  margin: 0 0 24px;
+}
+
+.close-confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.close-confirm-actions button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.close-confirm-actions button:first-child {
+  background: #3a3a40;
+  color: var(--ev-c-text-1);
+}
+
+.close-confirm-actions button:last-child {
+  background: #e74856;
+  color: #fff;
+}
+
+.close-confirm-actions button:hover {
+  opacity: 0.85;
+}
+
 @media (max-width: 720px) {
   .text {
     font-size: 20px;
