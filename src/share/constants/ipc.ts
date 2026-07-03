@@ -13,5 +13,8 @@ export const IPC = {
   WINDOW_DESTROY: 'window:destroy',
   WINDOW_CLOSE_CANCEL: 'window:closeCancel',
   WINDOW_OPEN_EXCLUSIVE: 'window:openExclusive',
-  WINDOW_GET_ALL_IDS: 'window:getAllIds'
+  WINDOW_GET_ALL_IDS: 'window:getAllIds',
+  PATHS_TEMP_PATH: 'paths:tempPath',
+  PATHS_EXE_PATH: 'paths:exePath',
+  PATHS_USER_DATA_PATH: 'paths:userDataPath'
 } as const

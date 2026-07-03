@@ -1,21 +1,10 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
-import { IPC } from '@share/constants/ipc'
-import { WIND_ID } from '@share/constants/index'
+import windowApi from './window'
 
 // 预加载脚本暴露出去的api
 const api = {
-  getWindowInfo: () => ipcRenderer.invoke(IPC.WINDOW_GET_INFO),
-  openWindow: (id: string) => ipcRenderer.invoke(IPC.WINDOW_OPEN, id),
-  onBeforeClose: (callback: () => void) => {
-    ipcRenderer.on(IPC.WINDOW_BEFORE_CLOSE, callback)
-  },
-  winClose: () => ipcRenderer.invoke(IPC.WINDOW_CLOSE),
-  winDestroy: () => ipcRenderer.invoke(IPC.WINDOW_DESTROY),
-  closeCancel: () => ipcRenderer.invoke(IPC.WINDOW_CLOSE_CANCEL),
-  openWindowExclusive: (id: string, exclusiveIds: string[]) =>
-    ipcRenderer.invoke(IPC.WINDOW_OPEN_EXCLUSIVE, id, exclusiveIds),
-  getWindowIds: () => ipcRenderer.invoke(IPC.WINDOW_GET_ALL_IDS) as Promise<typeof WIND_ID>
+  ...windowApi
 }
 
 // 仅在开启**上下文隔离（context isolation）**的情况下，使用 contextBridge API 将 Electron API 暴露给渲染进程；
