@@ -12,6 +12,12 @@ declare global {
       closeCancel: () => Promise<void>
       openWindowExclusive: (id: string, exclusiveIds: string[]) => Promise<boolean>
       getWindowIds: () => Promise<typeof import('@share/constants/index').WIND_ID>
+      encrypt: (plaintext: string) => Promise<{
+        iv: string
+        authTag: string
+        ciphertext: string
+      }>
+      decrypt: (encrypted: { iv: string; authTag: string; ciphertext: string }) => Promise<string>
     }
   }
 }

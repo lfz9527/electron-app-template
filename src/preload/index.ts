@@ -1,10 +1,12 @@
 import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 import windowApi from './window'
+import cryptoApi from './crypto'
 
 // 预加载脚本暴露出去的api
 const api = {
-  ...windowApi
+  ...windowApi,
+  ...cryptoApi
 }
 
 // 仅在开启**上下文隔离（context isolation）**的情况下，使用 contextBridge API 将 Electron API 暴露给渲染进程；

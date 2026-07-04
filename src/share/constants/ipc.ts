@@ -16,5 +16,7 @@ export const IPC = {
   WINDOW_GET_ALL_IDS: 'window:getAllIds',
   PATHS_TEMP_PATH: 'paths:tempPath',
   PATHS_EXE_PATH: 'paths:exePath',
-  PATHS_USER_DATA_PATH: 'paths:userDataPath'
+  PATHS_USER_DATA_PATH: 'paths:userDataPath',
+  CRYPTO_ENCRYPT: 'crypto:encrypt',
+  CRYPTO_DECRYPT: 'crypto:decrypt'
 } as const
