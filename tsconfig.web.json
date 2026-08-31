@@ -12,12 +12,8 @@
     "composite": true,
     "jsx": "react-jsx",
     "paths": {
-      "@renderer/*": [
-        "./src/renderer/*"
-      ],
-      "@share/*": [
-        "./src/share/*"
-      ]
+      "@renderer/*": ["./src/renderer/*"],
+      "@share/*": ["./src/share/*"]
     }
   }
 }

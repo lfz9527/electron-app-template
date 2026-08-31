@@ -50,7 +50,9 @@ function App(): React.JSX.Element {
           <a onClick={() => window.api.openWindow(winIds.SETTING)}>Open Setting</a>
         </div>
         <div className="action">
-          <a onClick={() => window.api.openWindowExclusive(winIds.AUTHOR, [winIds.SETTING])}>Open Author</a>
+          <a onClick={() => window.api.openWindowExclusive(winIds.AUTHOR, [winIds.SETTING])}>
+            Open Author
+          </a>
         </div>
       </div>
       <Versions></Versions>
