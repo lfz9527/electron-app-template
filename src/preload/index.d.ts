@@ -18,6 +18,10 @@ declare global {
         ciphertext: string
       }>
       decrypt: (encrypted: { iv: string; authTag: string; ciphertext: string }) => Promise<string>
+      // 读取应用日志内容
+      readLog: () => Promise<string>
+      // 导出应用日志，将日志复制到目标路径，返回是否成功
+      exportLog: (targetPath: string) => Promise<boolean>
     }
   }
 }

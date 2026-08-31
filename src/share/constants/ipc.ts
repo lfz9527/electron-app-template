@@ -18,5 +18,7 @@ export const IPC = {
   PATHS_EXE_PATH: 'paths:exePath',
   PATHS_USER_DATA_PATH: 'paths:userDataPath',
   CRYPTO_ENCRYPT: 'crypto:encrypt',
-  CRYPTO_DECRYPT: 'crypto:decrypt'
+  CRYPTO_DECRYPT: 'crypto:decrypt',
+  LOG_READ: 'log:read',
+  LOG_EXPORT: 'log:export'
 } as const

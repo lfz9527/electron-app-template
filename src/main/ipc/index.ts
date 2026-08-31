@@ -5,6 +5,7 @@ import { registerFileIpc } from './file'
 import { registerStoreIpc } from './store'
 import { registerWindowIpc } from './window'
 import { registerCryptoIpc } from './crypto'
+import { registerLogIpc } from './log'
 
 export function registerIpc(): void {
   registerDialogIpc()
@@ -12,6 +13,7 @@ export function registerIpc(): void {
   registerStoreIpc()
   registerWindowIpc()
   registerCryptoIpc()
+  registerLogIpc()
 
   Logger.info('register ipc')
 }

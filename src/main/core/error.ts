@@ -3,7 +3,7 @@ import log from 'electron-log/main'
 import { getUserDataPath } from '@main/utils'
 
 // 按日期命名日志文件（logs/yyyy-MM-dd.log）
-function formatLogFileName() {
+export function formatLogFileName() {
   const now = new Date()
   const date = [
     now.getFullYear(),
