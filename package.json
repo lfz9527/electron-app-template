@@ -1,6 +1,7 @@
 {
   "name": "electron-app-template",
   "version": "1.0.0",
+  "packageManager": "pnpm@11.5.2",
   "description": "An Electron application with React and TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -47,11 +48,5 @@
     "react-dom": "^19.2.1",
     "typescript": "^5.9.3",
     "vite": "^7.2.6"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "electron",
-      "esbuild"
-    ]
   }
 }
