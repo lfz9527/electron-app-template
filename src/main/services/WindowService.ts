@@ -16,12 +16,12 @@ export class WindowService implements IService {
   private closeRequests = new Map<number, (closed: boolean) => void>()
 
   async init() {
+    // 打开主窗口
     await this.open(WIND_ID.ADMIN)
 
     // main 窗口关闭时级联关闭所有子窗口，全部确认后才最后关闭自身
     const adminBw = mainWindow.getBrowserWindow()
     adminBw?.on('close', async (e) => {
-      console.log(3233)
       e.preventDefault()
       const ok = await this.requestCloseExcept(WIND_ID.ADMIN)
       if (ok) {
