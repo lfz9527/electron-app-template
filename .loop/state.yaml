@@ -1,0 +1,20 @@
+# Loop v1 run state — 自动生成，勿手改
+runId: loop-20260902-7f3a
+createdAt: 2026-09-02
+phase: DONE
+goal: 实现版本生成脚本，打包时先生成版本并写入 package.json 的 version
+branch: main
+baselineCommit: d0031ed09e3a47f61cee35670bbbdd66a5a4baa5
+iteration: 0
+fixAttempts: 0
+decisions:
+  versionRule: git-derived
+  scope: all-packaging-commands
+  versionFormat: '<major>.<minor>.<patch>-<commitCount>.<shortHash>'
+  emptyHashFallback: timestamp
+  scriptType: typescript-mts
+artifacts:
+  plans:
+    - .loop/plans/goal.md
+  evidence:
+    - (待 VERIFY 阶段填充)
