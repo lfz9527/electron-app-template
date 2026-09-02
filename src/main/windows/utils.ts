@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { BrowserWindowConstructorOptions } from 'electron'
+import { BrowserWindowConstructorOptions, app } from 'electron'
 
 export const defaultOptions: BrowserWindowConstructorOptions = {
   show: true,
@@ -7,6 +7,8 @@ export const defaultOptions: BrowserWindowConstructorOptions = {
   height: 670,
   autoHideMenuBar: true,
   webPreferences: {
+    // 打包后不能通过快捷键打开调试台
+    devTools: !app.isPackaged,
     // 不要让 页面拥有完整 Node.js 权限
     nodeIntegration: false,
     // 渲染进程和Electron API 隔离上下文
