@@ -49,6 +49,7 @@ pnpm format         # prettier --write .
 
 - Prettier：`singleQuote`、无分号、`printWidth: 100`、`trailingComma: none`（见 `.prettierrc.yaml`）。
 - 提交信息与代码注释使用中文；专有名词保留英文。
+- 工具函数（`src/main/utils` 等通用封装）的注释使用 JSDoc 形式（`/** ... */`），中文描述用途，必要时用 `@param`/`@returns` 标注参数与返回值。
 - 窗口 WebPreferences：`nodeIntegration: false`、`contextIsolation: true`、`sandbox: false`（见 `src/main/windows/utils.ts`）。
 - 加密密钥文件 `encrypted-key.bin` 存于 userData 目录，用 `safeStorage` 加密持久化（Linux 需关注系统 keyring 可用性）。
 

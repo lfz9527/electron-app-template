@@ -5,7 +5,8 @@
     "src/main/**/*",
     "src/preload/**/*",
     "src/share/**/*",
-    "src/types/global.d.ts"
+    "src/types/global.d.ts",
+    "scripts/**/*.mts"
   ],
   "compilerOptions": {
     "composite": true,
